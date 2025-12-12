@@ -1,0 +1,40 @@
+version: "3.9"   # أحدث نسخة Docker Compose
+
+services:
+  freshnamenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: freshnamenode
+    environment:
+      - CLUSTER_NAME=freshcluster
+      - CORE_CONF_fs_defaultFS=hdfs://freshnamenode:9000
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    ports:
+      - "9872:9870"   # UI جديد
+      - "9003:9000"   # HDFS RPC جديد
+    volumes:
+      - ./hdfs_fresh_data/namenode:/hadoop/dfs/name
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9872"]
+      interval: 10s
+      retries: 5
+
+  freshdatanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: freshdatanode
+    environment:
+      - CLUSTER_NAME=freshcluster
+      - CORE_CONF_fs_defaultFS=hdfs://freshnamenode:9000
+      - NAMENODE_URI=hdfs://freshnamenode:9000
+      - JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+    ports:
+      - "9866:9864"   # UI جديد
+      - "9870:9866"
+      - "9871:9867"
+    volumes:
+      - ./hdfs_fresh_data/datanode:/hadoop/dfs/data
+    depends_on:
+      - freshnamenode
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9866"]
+      interval: 10s
+      retries: 5
