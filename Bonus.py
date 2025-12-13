@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 import os
 
 # Paths
-merged_file = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\merged_dataset.parquet'
-monte_carlo_file = r'E:\MY.PROJECT.1\VS\.py\bigData\gold_layer\simulation_results.csv'
-factor_loadings_file = r'E:\MY.PROJECT.1\VS\.py\bigData\gold_layer\factor_loadings.csv'
-factor_heatmap_file = r'E:\MY.PROJECT.1\VS\.py\bigData\gold_layer\factor_loadings_heatmap.png'
+merged_file = r'.\temp_silver\merged_dataset.parquet'
+monte_carlo_file = r'.\gold_layer\simulation_results.csv'
+factor_loadings_file = r'.\gold_layer\factor_loadings.csv'
+factor_heatmap_file = r'.\gold_layer\factor_loadings_heatmap.png'
 
 st.set_page_config(page_title="Traffic & Weather Dashboard", layout="wide")
 st.title("📊 Traffic & Weather Analysis Dashboard")
