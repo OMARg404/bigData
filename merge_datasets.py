@@ -2,8 +2,8 @@ import pandas as pd
 import os
 
 # 🟢 1️⃣ مسارات الملفات المحلية
-weather_file = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\weather_cleaned.parquet'
-traffic_file = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\traffic_cleaned.parquet'
+weather_file = r'.\temp_silver\weather_cleaned.parquet'
+traffic_file = r'.\temp_silver\traffic_cleaned.parquet'
 
 # 🟢 2️⃣ قراءة الملفات
 try:
@@ -23,7 +23,7 @@ except Exception as e:
     exit(1)
 
 # 🟢 4️⃣ حفظ الـ merged dataset في Silver layer (ممكن تختار أي فولدر)
-silver_output = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\merged_dataset.parquet'
+silver_output = r'.\temp_silver\merged_dataset.parquet'
 try:
     df_merged.to_parquet(silver_output, index=False)
     print(f"💾 Merged dataset saved to: {silver_output}")

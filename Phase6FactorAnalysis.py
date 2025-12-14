@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.decomposition import FactorAnalysis
 
 # 1️⃣ تحميل البيانات المدمجة
-merged_file = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\merged_dataset.parquet'
+merged_file = r'.\temp_silver\merged_dataset.parquet'
 df = pd.read_parquet(merged_file)
 
 # 2️⃣ اختيار المتغيرات المطلوبة للتحليل
@@ -31,7 +31,7 @@ fa.fit(df_features)
 loadings = pd.DataFrame(fa.components_.T, index=features, columns=[f'Factor_{i+1}' for i in range(n_factors)])
 
 # 5️⃣ حفظ النتائج في Gold layer
-gold_dir = r'E:\MY.PROJECT.1\VS\.py\bigData\gold_layer'
+gold_dir = r'.\gold_layer'
 os.makedirs(gold_dir, exist_ok=True)
 factor_loadings_file = os.path.join(gold_dir, 'factor_loadings.csv')
 loadings.to_csv(factor_loadings_file)

@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # 1️⃣ قراءة الملف المدمج
-merged_file = r'E:\MY.PROJECT.1\VS\.py\bigData\temp_silver\merged_dataset.parquet'
+merged_file = r'.\temp_silver\merged_dataset.parquet'
 df = pd.read_parquet(merged_file)
 
 # 2️⃣ إعداد سيناريوهات الطقس
@@ -34,7 +34,7 @@ for i in range(n_simulations):
 df_results = pd.DataFrame(results)
 
 # 4️⃣ التأكد من وجود المجلد gold_layer
-gold_layer_dir = r'E:\MY.PROJECT.1\VS\.py\bigData\gold_layer'
+gold_layer_dir = r'.\gold_layer'
 os.makedirs(gold_layer_dir, exist_ok=True)
 
 # 5️⃣ حفظ النتائج
